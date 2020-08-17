@@ -2,8 +2,6 @@
 
 > This is the Capstone Project from the Microverse Program which intends to apply our knowledge of Ruby in a real-world-like project, built with business specifications
 
-
-
 ## Built With
 
 - Ruby
@@ -11,8 +9,6 @@
 ## Live Demo
 
 [Live Demo Link]()
-
-
 
 ### Prerequisites
 
