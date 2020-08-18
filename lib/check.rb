@@ -1,18 +1,17 @@
 require_relative '../lib/errors.rb'
-include Errors
 class Check
-    attr_accessor :input, :offenses
-  def initialize(input)
+  include Errors
+
+  attr_accessor :input, :offenses
+  def initialize(_input)
     @offenses = []
+    check
   end
 
-  def check 
-    output_max_line_length
-  end
-
-  def output_max_line_length
-    max_line_length
-    max_line_lengt
-
+  def check
+    check_indentation
+    check_spacing
+    check_closing
+    check_empty_lines
   end
 end

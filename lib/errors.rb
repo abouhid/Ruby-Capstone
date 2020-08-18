@@ -1,9 +1,19 @@
 require_relative '../lib/check.rb'
 module Errors
-    def max_line_length
-        offenses << true
-    end
-    def max_line_lengt
-        offenses << true
-    end
+  def check_indentation
+    puts offenses
+    offenses << 1
+  end
+
+  def check_spacing
+    offenses << false
+  end
+
+  def check_closing
+    offenses << 3
+  end
+
+  def check_empty_lines
+    offenses << 4
+  end
 end

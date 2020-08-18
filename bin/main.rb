@@ -3,14 +3,15 @@ require_relative '../lib/check.rb'
 require 'strscan'
 require 'colorize'
 
-s = Check.new('test string for checking errors')
+file = File.open('../code/code.css')
+file_data = file.readlines.map(&:chomp)
 
-offenses = s.check
+check_errors = Check.new(file_data)
 
-puts offenses
-
-# if offenses.zero?
-#   puts('1 file inspected,' + ' no offenses'.green + ' detected')
-# else
-#   puts('1 file inspected, ' + (offenses.to_s + ' offenses').red + ' detected')
-# end
+offenses = check_errors.offenses
+puts offenses.to_s
+if offenses.all?
+  puts('1 file inspected,' + ' no offenses'.green + ' detected')
+else
+  puts('1 file inspected, ' + (offenses.to_s + ' offenses').red + ' detected')
+end
