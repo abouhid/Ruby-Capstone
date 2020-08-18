@@ -1,14 +1,16 @@
 #!/usr/bin/env ruby
-
+require_relative '../lib/check.rb'
 require 'strscan'
 require 'colorize'
 
-s = StringScanner.new('test string')
+s = Check.new('test string for checking errors')
 
-offenses = 1
+offenses = s.check
 
-if offenses.zero?
-  puts(' files inspected,' + ' no offenses'.green + ' detected')
-else
-  puts(' files inspected, ' + (offenses.to_s + ' offenses').red + ' detected')
-end
+puts offenses
+
+# if offenses.zero?
+#   puts('1 file inspected,' + ' no offenses'.green + ' detected')
+# else
+#   puts('1 file inspected, ' + (offenses.to_s + ' offenses').red + ' detected')
+# end
