@@ -1,7 +1,6 @@
 require_relative '../lib/errors.rb'
 class Check
   include Errors
-
   attr_accessor :input, :offenses
   def initialize(_input)
     @offenses = []

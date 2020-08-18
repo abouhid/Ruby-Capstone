@@ -1,7 +1,6 @@
 require_relative '../lib/check.rb'
 module Errors
   def check_indentation
-    puts offenses
     offenses << 1
   end
 
