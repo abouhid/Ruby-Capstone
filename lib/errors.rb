@@ -1,6 +1,6 @@
-require_relative "../lib/check.rb"
-require_relative "../lib/load.rb"
-require "strscan"
+require_relative '../lib/check.rb'
+require_relative '../lib/load.rb'
+require 'strscan'
 
 module Errors
   def check_indentation(file_data)
@@ -9,21 +9,18 @@ module Errors
     indentation = level_indent(file_data)
     code.each_with_index do |line, i|
       if line[/\A */].size != indentation[i]
-        puts file_path.to_s.blue + "\n:#{i}:".cyan + "Warning: ".yellow +
-               "X".red + " Expected correct indentation"
-        offenses << 1
+        offenses << file_path.to_s.blue + "\n:#{i + 1}:".cyan + 'Warning: '.yellow +
+                    'X'.red + ' Expected correct indentation'
       end
     end
   end
 
   def level_indent(file_data)
     cur_lvl = 0
-    all_lvl = Array.new
+    all_lvl = []
     file_data.each_with_index do |line, i|
       line.reset
-
       all_lvl << cur_lvl
-
       if line.exist?(/{/)
         cur_lvl += 2
       elsif line.exist?(/}/)
@@ -39,11 +36,9 @@ module Errors
     code = file.file_data.to_a
     code.size.times do |i|
       pl = i - 1
-      cl = i
-      if code[i] == "" && code[pl] == ""
-        puts file_path.to_s.blue + "\n:#{i}:".cyan +
-               "Warning: ".yellow + "Layout/EmptyLines: Extra blank line detected."
-        offenses << 1
+      if code[i] == '' && code[pl] == ''
+        offenses << file_path.to_s.blue + "\n:#{i + 1}:".cyan +
+                    'Warning: '.yellow + 'Layout/EmptyLines: Extra blank line detected.'
       end
     end
   end
@@ -56,18 +51,16 @@ module Errors
       str = StringScanner.new(str.reverse)
       str.skip(char)
       str.scan(/\s+/)
-      if ele == "{"
-        if str.matched != " "
-          puts file_path.to_s.blue + "\n:#{ind}:".cyan + "Warning: ".yellow +
-               "X".red + " Expected single space before \"#{ele}\""
-          offenses << 1
+      if ele == '{'
+        if str.matched != ' '
+          offenses << file_path.to_s.blue + "\n:#{ind}:".cyan + 'Warning: '.yellow +
+                      'X'.red + " Expected single space before \"#{ele}\""
         end
         str = line.scan_until(char)
-      elsif ele == ";"
-        if str.matched == " "
-          puts file_path.to_s.blue + "\n:#{ind}:".cyan + "Warning: ".yellow +
-               "X".red + " Unexpected single space before \"#{ele}\""
-          offenses << 1
+      elsif ele == ';'
+        if str.matched == ' '
+          offenses << file_path.to_s.blue + "\n:#{ind}:".cyan + 'Warning: '.yellow +
+                      'X'.red + " Unexpected single space before \"#{ele}\""
         end
         str = line.scan_until(char)
       end
@@ -80,10 +73,9 @@ module Errors
     line.scan_until(char)
     while line.matched?
       line.scan(/\s+/)
-      if line.matched != " "
-        puts file_path.to_s.blue + "\n:#{ind}:".cyan + "Warning: ".yellow +
-             "X".red + " Expected single space after \"#{ele}\""
-        offenses << 1
+      if line.matched != ' '
+        offenses << file_path.to_s.blue + "\n:#{ind + 1}:".cyan + 'Warning: '.yellow +
+                    'X'.red + " Expected single space after \"#{ele}\""
       end
       line.scan_until(char)
     end

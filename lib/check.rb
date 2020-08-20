@@ -12,16 +12,14 @@ class Check
   end
 
   def check(file_data)
-    # check_empty_lines
-    # check_closing(file_data)
+    check_empty_lines
     check_indentation(file_data)
-
     file_data.each_with_index do |line, i|
       ind = i + 1
-      # space_before(ind, line, ';')
-      # space_before(ind, line, '{')
-      # space_after(ind, line, ':')
-      # space_after(ind, line, ',')
+      space_before(ind, line, ';')
+      space_before(ind, line, '{')
+      space_after(ind, line, ':')
+      space_after(ind, line, ',')
     end
   end
 end
