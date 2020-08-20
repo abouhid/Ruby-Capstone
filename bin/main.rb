@@ -5,6 +5,9 @@ require 'strscan'
 require 'colorize'
 include Errors
 
+
+# s= "     font-size: 18pt;"
+# p s[/\A */].size
 path = Dir.glob('../**/**.css').join
 file = Load.new(path)
 check = Check.new(file.file_scanned, file.file_path)
