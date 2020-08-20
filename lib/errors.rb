@@ -7,18 +7,21 @@ module Errors
     counter = 0
   end
 
-  def check_closing(file_data, file_path)
+  def check_closing
     # file_data.size.times do |i|
 
     # end
   end
 
-  def check_empty_lines(file_data, file_path)
-    file_data.size.times do |i|
+  def check_empty_lines
+    file = Load.new(file_path)
+    code = file.file_data.to_a
+    code.size.times do |i|
       pl = i - 1
       cl = i
-      if file_data[i] == "" && file_data[pl] == ""
-        puts (file_path.to_s + ":#{i + 1}:1:").blue + " Warning: ".yellow + "Layout/EmptyLines: Extra blank line detected."
+      if code[i] == "" && code[pl] == ""
+        puts file_path.to_s.blue + "\n:#{i}:".cyan + 
+        "Warning: ".yellow + "Layout/EmptyLines: Extra blank line detected."
         offenses << 1
       end
     end

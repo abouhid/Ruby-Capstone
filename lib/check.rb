@@ -12,14 +12,14 @@ class Check
   end
 
   def check(file_data)
-    check_empty_lines(file_data, file_path)
-
-    file_data.each_with_index do |line, i|
-      next_l = i + 1
-      space_before(next_l, line, ';')
-      space_before(next_l, line, '{')
-      space_after(next_l, line, ':')
-      space_after(next_l, line, ',')
-    end
+    # check_empty_lines
+    # check_closing
+    # file_data.each_with_index do |line, i|
+    #   next_l = i + 1
+    #   space_before(next_l, line, ';')
+    #   space_before(next_l, line, '{')
+    #   space_after(next_l, line, ':')
+    #   space_after(next_l, line, ',')
+    # end
   end
 end
