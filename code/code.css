@@ -1,9 +1,10 @@
 div { 
-    font-size: 18pt;
-  color: #222222; 
+    font-size: 12pt;
+color: red; 
+  bottom: 12px;
 }
 p,h3 {
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: Arial, sans-serif;
 }
 a{
 font-size:large ;  
