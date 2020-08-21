@@ -3,23 +3,24 @@ require 'strscan'
 
 class Check
   include Errors
-  attr_accessor :file_data, :offenses, :file, :file_path
+  attr_accessor :file_data, :offenses, :file, :file_path, :file_scanned
 
-  def initialize(file_data, file_path)
+  def initialize(file_scanned, file_path, file_data)
     @offenses = []
     @file_path = file_path
-    check(file_data)
+    @file_data = file_data
+    @file_scanned = file_scanned
+    check
   end
 
-  def check(file_data)
-    check_empty_lines
-    check_indentation(file_data)
-    file_data.each_with_index do |line, i|
-      ind = i + 1
-      space_before(ind, line, ';')
-      space_before(ind, line, '{')
-      space_after(ind, line, ':')
-      space_after(ind, line, ',')
+  def check
+    file_scanned.each_with_index do |_line, i|
+      check_empty_lines(file_data, i)
+      check_indentation(@file_scanned, @file_data[i], i)
+      space_before(';', @file_scanned[i], i)
+      space_before('{', @file_scanned[i], i)
+      space_after(':', @file_scanned[i], i)
+      space_after(',', @file_scanned[i], i)
     end
   end
 end
