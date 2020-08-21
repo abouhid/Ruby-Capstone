@@ -12,6 +12,14 @@ describe Check do
   let(:file_scanned) { file.file_scanned }
   let(:file_data) { file.file_data }
 
+  describe ' #check_empty_lines' do
+    it 'Checks that no error is returned when the code does not find more than one empty line' do
+      expect(check.check_empty_lines(file_data, 5)).to eql(nil)
+    end
+    it 'Checks that a error is returned when the code finds more than one empty line' do
+      expect(check.check_empty_lines(file_data, 12)).to eql('error')
+    end
+  end
 
   describe ' #check_indentation' do
     it 'Checks the indentation of the first line from code.css' do

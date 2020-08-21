@@ -4,15 +4,13 @@ require 'strscan'
 
 module Errors
   def check_indentation(file_scanned, file_data, line)
-   indentation = level_indent(file_scanned)
-    # rubocop:disable Style/GuardClause
+    indentation = level_indent(file_scanned)
     if file_data[/\A */].size != indentation[line]
-      offenses.push(file_path.to_s.blue + "\n:#{line + 1}:".cyan + 'Warning: '.yellow +
-                  'X'.red + ' Expected correct indentation')
-     indentation[line]
+      offenses << file_path.to_s.blue + "\n:#{line + 1}:".cyan + 'Warning: '.yellow +
+                  'X'.red + ' Expected correct indentation'
+      indentation[line]
     end
     file_data[/\A */].size
-    # rubocop:enable Style/GuardClause
   end
 
   def level_indent(file_scanned)
@@ -36,6 +34,7 @@ module Errors
     if file_data[line] == '' && file_data[line - 1] == ''
       offenses << file_path.to_s.blue + "\n:#{line + 1}:".cyan +
                   'Warning: '.yellow + 'Layout/EmptyLines: Extra blank line detected.'
+      'error'
     end
   end
   # rubocop:enable Style/GuardClause
