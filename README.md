@@ -25,11 +25,11 @@
 - Browser (Google Chrome, Mozilla Firefox, Safari or any other browser)
 
 ### Getting Started
-- Open Terminal
-- Run git clone git@github.com:abouhid/Ruby-Capstone.git
-- Run cd Ruby-Capstone
-- Run ruby bin/main.rb
-
+```Open Terminal
+run git clone git@github.com:abouhid/Ruby-Capstone.git
+run cd Ruby-Capstone
+run ruby bin/main.rb
+```
 ## Rules 
 
 * These are the examples extracted from the '/code.css' file that the code analyzes, here we can see both bad and good practices in CSS:
