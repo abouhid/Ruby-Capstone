@@ -36,15 +36,16 @@ run ruby bin/main.rb
 
 **Checking Indentation**
 
-```bad code:
+bad code:
+```
 div { 
     font-size: 12pt;
 color: red; 
   bottom: 12px;
 }
 ```
-
-```good code:
+good code:
+```
 div { 
   font-size: 12pt;
   color: red; 
@@ -54,7 +55,8 @@ div {
 
 **Checking More than one empty line**
 
-```bad code:
+bad code:
+```
 img{
     width: 20px; 
 }
@@ -64,8 +66,8 @@ h1, h2 {
     margin-top: 0;
 }
 ```
-
-```good code:
+good code:
+```
 img{
   width: 20px; 
 }
@@ -76,7 +78,8 @@ h1, h2 {
 ```
 **Checking Spacing before/after specific elements**
 
-```bad code:
+bad code:
+```
 p,h3{
     font-family : Arial,sans-serif ;
 }
@@ -86,8 +89,8 @@ font-size:large ;
 font-weight:   100;
 }
 ```
-
-```good code:
+good code:
+```
 p, h3 {
   font-family: Arial, sans-serif;
 }
