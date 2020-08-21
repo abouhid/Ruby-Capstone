@@ -25,7 +25,10 @@ describe Check do
       expect(check.check_indentation(file_scanned, file_data[1], 1)).to eql(4)
     end
     it 'Checks the indentation of the third line from code.css' do
-      expect(check.check_indentation(file_scanned, file_data[2], 2)).to eql(2)
+      expect(check.check_indentation(file_scanned, file_data[2], 2)).to eql(0)
+    end
+    it 'Checks the indentation of the fourth line from code.css' do
+      expect(check.check_indentation(file_scanned, file_data[3], 3)).to eql(2)
     end
   end
 
@@ -33,28 +36,28 @@ describe Check do
     it 'Tests first line in which the code does not find a \'{\' without a space before it' do
       expect(check.space_before('{', file_scanned[0], 0)).to eql(nil)
     end
-    it 'Tests eigth line in which the code finds a \'{\' without a space before it' do
-      expect(check.space_before('{', file_scanned[7], 7)).to eql(' Expected single space before "{"')
+    it 'Tests ninth line in which the code finds a \'{\' without a space before it' do
+      expect(check.space_before('{', file_scanned[8], 8)).to eql(' Expected single space before "{"')
     end
-    it 'Tests ninth line in which the code finds a space before \';\'' do
-      expect(check.space_before(';', file_scanned[8], 8)).to eql(' Unexpected single space before ";"')
+    it 'Tests tenth line in which the code finds a space before \';\'' do
+      expect(check.space_before(';', file_scanned[9], 9)).to eql(' Unexpected single space before ";"')
     end
-    it 'Tests tenth line in which the code does not find a space before \';\'' do
-      expect(check.space_before(';', file_scanned[9], 9)).to eql(nil)
+    it 'Tests eleventh line in which the code does not find a space before \';\'' do
+      expect(check.space_before(';', file_scanned[10], 10)).to eql(nil)
     end
   end
   describe ' #space_after' do
-    it 'Tests fith line in which the code finds a \',\' without a space after it' do
-      expect(check.space_after(',', file_scanned[4], 4)).to eql(' Expected single space after ","')
+    it 'Tests sixth line in which the code finds a \',\' without a space after it' do
+      expect(check.space_after(',', file_scanned[5], 5)).to eql(' Expected single space after ","')
     end
-    it 'Tests sixth line in which the code does not find a \',\' without a space after it' do
-      expect(check.space_after(',', file_scanned[5], 5)).to eql(nil)
+    it 'Tests seventh line in which the code does not find a \',\' without a space after it' do
+      expect(check.space_after(',', file_scanned[6], 6)).to eql(nil)
     end
-    it 'Tests eigth line in which the code does not find a \':\' without a space after it' do
-      expect(check.space_after(':', file_scanned[7], 7)).to eql(nil)
+    it 'Tests ninth line in which the code does not find a \':\' without a space after it' do
+      expect(check.space_after(':', file_scanned[8], 8)).to eql(nil)
     end
-    it 'Tests ninth line in which the code finds a \':\' without a space after it' do
-      expect(check.space_after(':', file_scanned[8], 8)).to eql(' Expected single space after ":"')
+    it 'Tests tenth line in which the code finds a \':\' without a space after it' do
+      expect(check.space_after(':', file_scanned[9], 9)).to eql(' Expected single space after ":"')
     end
   end
 end
