@@ -1,6 +1,7 @@
 require_relative '../lib/check.rb'
 require 'strscan'
 require 'colorize'
+
 describe Check do
   let(:path) { Dir.glob('../**/code.css').join }
   let(:file) { Load.new(path) }

@@ -1,4 +1,3 @@
-#!/usr/bin/env ruby
 require_relative '../lib/check.rb'
 require 'strscan'
 require 'colorize'

@@ -3,7 +3,7 @@ require 'strscan'
 
 class Check
   include Errors
-  attr_accessor :file_data, :offenses, :file, :file_path, :file_scanned
+  attr_reader :file_data, :offenses, :file, :file_path, :file_scanned
 
   def initialize(file_scanned, file_path, file_data)
     @offenses = []

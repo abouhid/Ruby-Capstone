@@ -1,4 +1,3 @@
-require_relative '../lib/check.rb'
 require_relative '../lib/load.rb'
 require 'strscan'
 
@@ -11,22 +10,6 @@ module Errors
       indentation[line]
     end
     file_data[/\A */].size
-  end
-
-  def level_indent(file_scanned)
-    cur_lvl = 0
-    all_lvl = []
-    file_scanned.each_with_index do |line, i|
-      line.reset
-      all_lvl << cur_lvl
-      if line.exist?(/{/)
-        cur_lvl += 2
-      elsif line.exist?(/}/)
-        cur_lvl -= 2
-        all_lvl[i] = cur_lvl
-      end
-    end
-    all_lvl
   end
 
   # rubocop:disable Style/GuardClause
@@ -79,5 +62,23 @@ module Errors
       end
       line.scan_until(char)
     end
+  end
+
+  private
+
+  def level_indent(file_scanned)
+    cur_lvl = 0
+    all_lvl = []
+    file_scanned.each_with_index do |line, i|
+      line.reset
+      all_lvl << cur_lvl
+      if line.exist?(/{/)
+        cur_lvl += 2
+      elsif line.exist?(/}/)
+        cur_lvl -= 2
+        all_lvl[i] = cur_lvl
+      end
+    end
+    all_lvl
   end
 end
