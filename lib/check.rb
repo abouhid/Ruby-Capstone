@@ -14,6 +14,7 @@ class Check
   end
 
   def check
+    # a = check_indentation(file_scanned, file_data[1], 1)
     file_scanned.each_with_index do |line, i|
       check_empty_lines(file_data, i)
       check_indentation(@file_scanned, @file_data[i], i)

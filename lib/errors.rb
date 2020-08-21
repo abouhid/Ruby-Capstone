@@ -4,12 +4,14 @@ require 'strscan'
 
 module Errors
   def check_indentation(file_scanned, file_data, line)
-    indentation = level_indent(file_scanned)
+   indentation = level_indent(file_scanned)
     # rubocop:disable Style/GuardClause
     if file_data[/\A */].size != indentation[line]
-      offenses << file_path.to_s.blue + "\n:#{line + 1}:".cyan + 'Warning: '.yellow +
-                  'X'.red + ' Expected correct indentation'
+      offenses.push(file_path.to_s.blue + "\n:#{line + 1}:".cyan + 'Warning: '.yellow +
+                  'X'.red + ' Expected correct indentation')
+     indentation[line]
     end
+    file_data[/\A */].size
     # rubocop:enable Style/GuardClause
   end
 
