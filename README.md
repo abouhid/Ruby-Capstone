@@ -32,16 +32,16 @@
 
 **Checking Indentation**
 
-bad code:
-```div { 
+```bad code:
+div { 
     font-size: 12pt;
 color: red; 
   bottom: 12px;
 }
 ```
 
-good code:
-```div { 
+```good code:
+div { 
   font-size: 12pt;
   color: red; 
   bottom: 12px;
@@ -50,8 +50,8 @@ good code:
 
 **Checking More than one empty line**
 
-bad code:
-```img{
+```bad code:
+img{
     width: 20px; 
 }
 
@@ -61,19 +61,19 @@ h1, h2 {
 }
 ```
 
-good code:
-```img{
-    width: 20px; 
+```good code:
+img{
+  width: 20px; 
 }
 
 h1, h2 {
-    margin-top: 0;
+  margin-top: 0;
 }
 ```
 **Checking Spacing before/after specific elements**
 
-bad code:
-```p,h3{
+```bad code:
+p,h3{
     font-family : Arial,sans-serif ;
 }
 
@@ -83,8 +83,8 @@ font-weight:   100;
 }
 ```
 
-good code:
-```p, h3 {
+```good code:
+p, h3 {
   font-family: Arial, sans-serif;
 }
 
