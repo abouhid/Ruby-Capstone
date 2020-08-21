@@ -50,14 +50,14 @@ module Errors
         if str.matched != ' '
           offenses << file_path.to_s.blue + "\n:#{ind + 1}:".cyan + 'Warning: '.yellow +
                       'X'.red + " Expected single space before \"#{ele}\""
-                      return " Expected single space before \"#{ele}\""
+          return " Expected single space before \"#{ele}\""
         end
         str = line.scan_until(char)
       elsif ele == ';'
         if str.matched == ' '
           offenses << file_path.to_s.blue + "\n:#{ind + 1}:".cyan + 'Warning: '.yellow +
                       'X'.red + " Unexpected single space before \"#{ele}\""
-                      return " Expected single space before \"#{ele}\""
+          return " Unexpected single space before \"#{ele}\""
 
         end
         str = line.scan_until(char)
@@ -74,6 +74,8 @@ module Errors
       if line.matched != ' '
         offenses << file_path.to_s.blue + "\n:#{ind + 1}:".cyan + 'Warning: '.yellow +
                     'X'.red + " Expected single space after \"#{ele}\""
+        return " Expected single space after \"#{ele}\""
+
       end
       line.scan_until(char)
     end

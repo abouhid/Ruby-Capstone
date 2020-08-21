@@ -1,6 +1,5 @@
 #!/usr/bin/env ruby
 require_relative '../lib/check.rb'
-require 'nokogiri'
 require 'strscan'
 require 'colorize'
 

@@ -14,13 +14,13 @@ class Check
   end
 
   def check
-    file_scanned.each_with_index do |line, i|
-      # check_empty_lines(file_data, i)
-      # check_indentation(@file_scanned, @file_data[i], i)
-      space_before(';',  @file_scanned[i], i)
-      space_before('{',  @file_scanned[i], i)
-      # space_after(':',  @file_scanned[i], i)
-      # space_after(',',  @file_scanned[i], i)
+    file_scanned.each_with_index do |_line, i|
+      check_empty_lines(file_data, i)
+      check_indentation(@file_scanned, @file_data[i], i)
+      space_before(';', @file_scanned[i], i)
+      space_before('{', @file_scanned[i], i)
+      space_after(':', @file_scanned[i], i)
+      space_after(',', @file_scanned[i], i)
     end
   end
 end
