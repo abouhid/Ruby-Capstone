@@ -14,22 +14,30 @@
 - Ruby
 - Rspec 3.9
 
+## Video Presentation
 
-
-## Live Demo
-
-[Live Demo Link](https://www.loom.com/share/7934d967438b44379f6bedbf0e64f66e)
+[Video Presentation Link](https://www.loom.com/share/7934d967438b44379f6bedbf0e64f66e)
 
 ### Prerequisites
 
 - Browser (Google Chrome, Mozilla Firefox, Safari or any other browser)
 
 ### Getting Started
-```Open Terminal
+```
+Open Terminal
 run git clone git@github.com:abouhid/Ruby-Capstone.git
+run gem install colorize (in case you do not have it installed)
 run cd Ruby-Capstone
 run ruby bin/main.rb
 ```
+
+### To Run Tests
+In case you want to test the code, it is quite simple for it to be done:
+```
+Open root directory
+run rspec
+```
+
 ## Rules 
 
 * These are the examples extracted from the '/code.css' file that the code analyzes, here we can see both bad and good practices in CSS:
