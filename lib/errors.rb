@@ -34,12 +34,11 @@ module Errors
     if file_data[line] == '' && file_data[line - 1] == ''
       offenses << file_path.to_s.blue + "\n:#{line + 1}:".cyan +
                   'Warning: '.yellow + 'Layout/EmptyLines: Extra blank line detected.'
-      'error'
     end
   end
   # rubocop:enable Style/GuardClause
 
-  def space_before(ind, line, ele)
+  def space_before(ele, line, ind)
     line.reset
     char = Regexp.new(ele)
     str = line.scan_until(char)
@@ -49,21 +48,24 @@ module Errors
       str.scan(/\s+/)
       if ele == '{'
         if str.matched != ' '
-          offenses << file_path.to_s.blue + "\n:#{ind}:".cyan + 'Warning: '.yellow +
+          offenses << file_path.to_s.blue + "\n:#{ind + 1}:".cyan + 'Warning: '.yellow +
                       'X'.red + " Expected single space before \"#{ele}\""
+                      return " Expected single space before \"#{ele}\""
         end
         str = line.scan_until(char)
       elsif ele == ';'
         if str.matched == ' '
-          offenses << file_path.to_s.blue + "\n:#{ind}:".cyan + 'Warning: '.yellow +
+          offenses << file_path.to_s.blue + "\n:#{ind + 1}:".cyan + 'Warning: '.yellow +
                       'X'.red + " Unexpected single space before \"#{ele}\""
+                      return " Expected single space before \"#{ele}\""
+
         end
         str = line.scan_until(char)
       end
     end
   end
 
-  def space_after(ind, line, ele)
+  def space_after(ele, line, ind)
     line.reset
     char = Regexp.new(ele)
     line.scan_until(char)
