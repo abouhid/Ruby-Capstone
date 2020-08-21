@@ -7,14 +7,18 @@
 - Checks the presence of whitespace before '{' and ';' 
 - Checks the presence of whitespace after ',' and ':' 
 
+![Screenshot](screenshot.png)
+
 ## Built With
 
 - Ruby
 - Rspec 3.9
 
+
+
 ## Live Demo
 
-[Live Demo Link]()
+[Live Demo Link](https://www.loom.com/share/7934d967438b44379f6bedbf0e64f66e)
 
 ### Prerequisites
 
