@@ -3,22 +3,20 @@ require_relative '../lib/load.rb'
 require 'strscan'
 
 module Errors
-  def check_indentation(file_data)
-    file = Load.new(file_path)
-    code = file.file_data.to_a
-    indentation = level_indent(file_data)
-    code.each_with_index do |line, i|
-      if line[/\A */].size != indentation[i]
-        offenses << file_path.to_s.blue + "\n:#{i + 1}:".cyan + 'Warning: '.yellow +
-                    'X'.red + ' Expected correct indentation'
-      end
+  def check_indentation(file_scanned, file_data, line)
+    indentation = level_indent(file_scanned)
+    # rubocop:disable Style/GuardClause
+    if file_data[/\A */].size != indentation[line]
+      offenses << file_path.to_s.blue + "\n:#{line + 1}:".cyan + 'Warning: '.yellow +
+                  'X'.red + ' Expected correct indentation'
     end
+    # rubocop:enable Style/GuardClause
   end
 
-  def level_indent(file_data)
+  def level_indent(file_scanned)
     cur_lvl = 0
     all_lvl = []
-    file_data.each_with_index do |line, i|
+    file_scanned.each_with_index do |line, i|
       line.reset
       all_lvl << cur_lvl
       if line.exist?(/{/)
@@ -31,17 +29,14 @@ module Errors
     all_lvl
   end
 
-  def check_empty_lines
-    file = Load.new(file_path)
-    code = file.file_data.to_a
-    code.size.times do |i|
-      pl = i - 1
-      if code[i] == '' && code[pl] == ''
-        offenses << file_path.to_s.blue + "\n:#{i + 1}:".cyan +
-                    'Warning: '.yellow + 'Layout/EmptyLines: Extra blank line detected.'
-      end
+  # rubocop:disable Style/GuardClause
+  def check_empty_lines(file_data, line)
+    if file_data[line] == '' && file_data[line - 1] == ''
+      offenses << file_path.to_s.blue + "\n:#{line + 1}:".cyan +
+                  'Warning: '.yellow + 'Layout/EmptyLines: Extra blank line detected.'
     end
   end
+  # rubocop:enable Style/GuardClause
 
   def space_before(ind, line, ele)
     line.reset
