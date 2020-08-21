@@ -1,3 +1,3 @@
-gem 'strscan'
-gem 'rspec'
 gem 'colorize'
+gem 'rspec'
+gem 'strscan'
