@@ -1,0 +1,23 @@
+div { 
+    font-size: 12pt;
+color: red; 
+  bottom: 12px;
+}
+p,h3 {
+    font-family: Arial, sans-serif;
+}
+a{
+font-size:large ;  
+font-weight:   100;  
+
+
+
+}
+img{
+    width: 20px; 
+}
+
+
+h1, h2 {
+    margin-top: 0;
+}
